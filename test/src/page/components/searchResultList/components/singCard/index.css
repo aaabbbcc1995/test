@@ -1,0 +1,79 @@
+.singleCardContainer {
+    /* Auto Layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: static;
+    width: 642px;
+    height: 100px;
+    left: 0px;
+    top: 0px;
+    /* Gray */
+    background: #f2f4f8;
+    border-radius: 12px;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 10px 0px;
+}
+
+.imgContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    margin-left: 12px;
+    top: 12px;
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+}
+
+.columnContainer {
+    display: flex;
+    align-items: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 482px;
+    height: 54px;
+    margin-left: 20px;
+}
+
+.title {
+    width: 100%;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+}
+
+.description {
+    width: 100%;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height, or 125% */
+    letter-spacing: 0.75px;
+    /* Paragraph */
+    color: #999faa;
+}
+
+.linkIcon {
+    /* background: #999FAA;
+        opacity: 0.2; */
+    /* Inside Auto Layout */
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    margin: 0px 20px;
+}

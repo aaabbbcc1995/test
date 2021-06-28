@@ -1,0 +1,27 @@
+.singleLabel {
+    background: #6833FF;
+    border-radius: 40px;
+    height: 32px;
+    margin-left: 16px;
+}
+
+.labelContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 16px;
+}
+
+.labelTitle {
+    margin: 0px 8px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    /* identical to box height, or 129% */
+    text-align: center;
+    letter-spacing: 0.75px;
+    color: #FFFFFF;
+}
