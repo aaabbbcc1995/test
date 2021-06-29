@@ -15,6 +15,7 @@ const SearchBar: React.FC = () => {
           className={"inputBar"}
           id={"name"}
           name={"name"}
+          autoComplete={'off'}
           placeholder={"Search what technologies we are using at DC..."}
         />
       </div>

@@ -4,6 +4,7 @@ import "./app.css";
 import LabelList from "./components/labelList";
 import SearchResultList from "./components/searchResultList";
 import axios from "axios";
+import { getApiUrl } from "./urls/urls";
 
 interface searchResultProps {
   title: string;
@@ -17,12 +18,9 @@ const App: React.FC = () => {
   const [searchResult, setSearchResult] = useState<searchResultProps[]>();
   const [loading, setLoading] = useState(false);
 
-  const url =
-    "https://frontend-test-api.digitalcreative.cn/?no-throttling=true&search=language";
-
   const fetchData = async () => {
     try {
-      const data = await axios.get(url).then((res: any) => {
+      const data = await axios.get(getApiUrl('true','language')).then((res: any) => {
         console.log(res.data);
         setSearchResult(res.data);
       });
