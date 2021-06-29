@@ -15,15 +15,18 @@ interface searchResultProps {
 }
 
 const App: React.FC = () => {
-  const [searchResult, setSearchResult] = useState<searchResultProps[]>();
-  const [loading, setLoading] = useState(false);
+  const [ searchResult, setSearchResult ] = useState<searchResultProps[]>();
+  const [ loading, setLoading ] = useState<Boolean>(false);
+  const [ keyword, setKeyword ] = useState<string>('')
 
   const fetchData = async () => {
     try {
-      const data = await axios.get(getApiUrl('true','language')).then((res: any) => {
-        console.log(res.data);
-        setSearchResult(res.data);
-      });
+      const data = await axios
+        .get(getApiUrl("true", keyword))
+        .then((res: any) => {
+          console.log(res.data);
+          setSearchResult(res.data);
+        });
       console.log("data", data);
     } catch (e) {
       console.log(e);
@@ -32,12 +35,12 @@ const App: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [keyword]);
 
   return (
     <div className="mainContainer">
       <div className="cardBody">
-        <SearchBar />
+        <SearchBar setKeyword={setKeyword}/>
         <LabelList />
         <SearchResultList SearchResultList={searchResult!} />
       </div>

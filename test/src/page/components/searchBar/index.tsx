@@ -1,8 +1,24 @@
 import React from "react";
 import "./index.css";
+import { debounce } from "./utils";
 import "/svg/searchIcon.svg";
 
-const SearchBar: React.FC = () => {
+interface SearchBarProps {
+  setKeyword: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const SearchBar: React.FC<SearchBarProps> = (props) => {
+  const { setKeyword } = props;
+
+  const handleOnInput = debounce(
+    (e: {
+      target: { value: { toString: () => React.SetStateAction<string> } };
+    }) => {
+      setKeyword(e.target.value.toString());
+    },
+    1000
+  );
+
   return (
     <div className={"searchBarContainer"}>
       <div className={"searchBar"}>
@@ -15,8 +31,9 @@ const SearchBar: React.FC = () => {
           className={"inputBar"}
           id={"name"}
           name={"name"}
-          autoComplete={'off'}
+          autoComplete={"off"}
           placeholder={"Search what technologies we are using at DC..."}
+          onChange={(e) => handleOnInput(e)}
         />
       </div>
     </div>
