@@ -4,8 +4,7 @@ import "./app.css";
 import LabelList from "./components/labelList";
 import SearchResultList from "./components/searchResultList";
 
-
-function App() {
+const App: React.FC =()=> {
   return (
     <div className="mainContainer">
       <div className="cardBody">
