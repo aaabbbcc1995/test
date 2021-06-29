@@ -1,24 +1,27 @@
 import React from "react";
+import Loading from "../loading";
 import SingleCard from "./components/singCard";
 import "./index.css";
 
 interface SearchResultListProps {
-  SearchResultList: {
+  searchResultList: {
     title: string;
     description: string;
     image: string;
     url: string;
     category: string;
   }[];
+  loading: boolean;
 }
 
 const SearchResultList: React.FC<SearchResultListProps> = (props) => {
-  const { SearchResultList } = props;
+  const { searchResultList, loading } = props;
 
   return (
     <div className="searchResultListContainer">
-      {SearchResultList && SearchResultList.length > 0
-        ? SearchResultList.map((item) => {
+      {loading && <Loading />}
+      {searchResultList && searchResultList.length > 0
+        ? searchResultList.map((item) => {
             return (
               <a href={item.url} style={{ textDecoration: "none" }}>
                 <SingleCard

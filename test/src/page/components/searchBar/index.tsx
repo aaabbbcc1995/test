@@ -16,7 +16,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
     }) => {
       setKeyword(e.target.value.toString());
     },
-    1000
+    300
   );
 
   return (
