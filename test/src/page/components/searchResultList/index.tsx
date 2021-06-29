@@ -1,15 +1,35 @@
 import React from "react";
 import SingleCard from "./components/singCard";
+import "./index.css";
 
-const SearchResultList: React.FC = () => {
+interface SearchResultListProps {
+  SearchResultList: {
+    title: string;
+    description: string;
+    image: string;
+    url: string;
+    category: string;
+  }[];
+}
+
+const SearchResultList: React.FC<SearchResultListProps> = (props) => {
+  const { SearchResultList } = props;
+
   return (
-    <div>
-      <SingleCard
-        img={"123"}
-        title={"123"}
-        description={"123"}
-        url={"123"}
-      />
+    <div className="searchResultListContainer">
+      {SearchResultList && SearchResultList.length > 0
+        ? SearchResultList.map((item) => {
+            return (
+              <a href={item.url} style={{ textDecoration: "none" }}>
+                <SingleCard
+                  img={item.image}
+                  title={item.title}
+                  description={item.description}
+                />
+              </a>
+            );
+          })
+        : null}
     </div>
   );
 };

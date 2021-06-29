@@ -6,18 +6,17 @@ interface SingleCardProps {
   img: string;
   title: string;
   description: string;
-  url: string;
 }
 
 const SingleCard: React.FC<SingleCardProps> = (props) => {
-  const { img, title, description, url } = props;
+  const { img, title, description } = props;
   return (
     <div className={"singleCardContainer"}>
       <div className={"imgContainer"}>
         <img
           className={"img"}
-          src={"https://frontend-test-api.digitalcreative.cn/nodejs.png"}
-          alt={"123"}
+          src={img}
+          alt={title}
         />
       </div>
       <div className={"columnContainer"}>

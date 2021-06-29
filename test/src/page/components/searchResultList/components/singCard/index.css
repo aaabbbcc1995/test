@@ -9,13 +9,21 @@
     left: 0px;
     top: 0px;
     /* Gray */
-    background: #f2f4f8;
     border-radius: 12px;
     /* Inside Auto Layout */
     flex: none;
     order: 0;
     flex-grow: 0;
     margin: 10px 0px;
+    margin-left: 24px;
+}
+
+.singleCardContainer:hover {
+    background-color: #f2f4f8;
+}
+
+.singleCardContainer:hover .linkIcon {
+    visibility: visible;
 }
 
 .imgContainer {
@@ -72,6 +80,7 @@
     /* background: #999FAA;
         opacity: 0.2; */
     /* Inside Auto Layout */
+    visibility: hidden;
     flex: none;
     order: 2;
     flex-grow: 0;
