@@ -20,7 +20,6 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
   );
 
   return (
-    <div className={"searchBarContainer"}>
       <div className={"searchBar"}>
         <img
           className={"searchIcon"}
@@ -36,7 +35,6 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
           onChange={(e) => handleOnInput(e)}
         />
       </div>
-    </div>
   );
 };
 

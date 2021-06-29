@@ -39,13 +39,18 @@ const App: React.FC = () => {
   }, [keyword]);
 
   return (
-    <div className="mainContainer">
-      <div className="cardBody">
-        <SearchBar setKeyword={setKeyword} />
-        <LabelList />
-        <SearchResultList searchResultList={searchResult!} loading={loading} />
+    <div className={"mainContainer"}>
+      <div className={"cardContainer"}>
+        <div className={"cardBody"}>
+          <SearchBar setKeyword={setKeyword} />
+          <LabelList />
+          <SearchResultList
+            searchResultList={searchResult!}
+            loading={loading}
+          />
+          <div className={"cardFooter"}></div>
+        </div>
       </div>
-      <div className="cardFooter" />
     </div>
   );
 };
