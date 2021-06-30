@@ -46,3 +46,48 @@
     border-top: 1px solid #F2F4F8;
     border-radius: 0 0 20px 20px;
 }
+
+.DCLogo {
+    position: absolute;
+    bottom: 49px;
+    right: 50px;
+    color: #D5D9DE;
+    font-size: 40px;
+    font-family: Poppins;
+    font-style: bold;
+}
+
+
+/*滚动条整体样式*/
+
+div::-webkit-scrollbar {
+    width: 10px;
+    height: 3px;
+    background-color: transparent;
+}
+
+div::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+div::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 5px;
+}
+
+div:hover::-webkit-scrollbar-thumb {
+    background: #F2F4F8;
+}
+
+div::scrollbar-thumb:hover {
+    background: #F2F4F8;
+}
+
+div::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+div::-webkit-scrollbar-track:hover {
+    background: transparent;
+}

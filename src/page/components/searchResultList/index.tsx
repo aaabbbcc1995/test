@@ -3,23 +3,27 @@ import Loading from "../loading";
 import SingleCard from "./components/singCard";
 import "./index.css";
 import "/svg/searching.svg";
-
-interface SearchResultListProps {
-  searchResultList: {
-    title: string;
-    description: string;
-    image: string;
-    url: string;
-    category: string;
-  }[];
-  loading: boolean;
-}
+import "/svg/countingStarts.svg";
 
 const SearchResultList: React.FC<SearchResultListProps> = (props) => {
-  const { searchResultList, loading } = props;
+  const { searchResultList, loading, errorStatus } = props;
+
+  let listHeight = "";
+
+  if (searchResultList && searchResultList.length > 0) {
+    listHeight = (searchResultList.length * 120).toString() + "px";
+  }
 
   return (
-    <div className={"searchResultListContainer"}>
+    <div
+      className={"searchResultListContainer"}
+      style={{
+        height:
+          searchResultList && searchResultList.length > 0
+            ? listHeight
+            : "470px",
+      }}
+    >
       {loading && <Loading />}
       {searchResultList && searchResultList.length > 0 ? (
         searchResultList.map((item) => {
@@ -34,8 +38,11 @@ const SearchResultList: React.FC<SearchResultListProps> = (props) => {
           );
         })
       ) : (
-        <div className={"searchingImgContainer"}>
-          <img src={"/svg/searching.svg"} alt={"searching"} />
+        <div className={"reactImgContainer"}>
+          <img
+            src={errorStatus!=='' ? "/svg/countingStarts.svg" : "/svg/searching.svg"}
+            alt={errorStatus!=='' ? "/svg/countingStarts.svg" : "/svg/searching.svg"}
+          />
         </div>
       )}
     </div>

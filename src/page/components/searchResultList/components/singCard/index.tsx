@@ -1,12 +1,7 @@
 import React from "react";
 import "./index.css";
+import { SingleCardProps } from "./type";
 import "/svg/linkIcon.svg";
-
-interface SingleCardProps {
-  img: string;
-  title: string;
-  description: string;
-}
 
 const SingleCard: React.FC<SingleCardProps> = (props) => {
   const { img, title, description } = props;

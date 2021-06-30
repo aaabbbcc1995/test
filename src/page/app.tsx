@@ -4,53 +4,78 @@ import "./app.css";
 import LabelList from "./components/labelList";
 import SearchResultList from "./components/searchResultList";
 import axios from "axios";
-import { getApiUrl } from "./urls/urls";
 
-interface searchResultProps {
-  title: string;
-  description: string;
-  image: string;
-  url: string;
-  category: string;
-}
+import FooterText from "./components/footerText";
+import { getApiUrl } from "./urls/urls";
+import { searchResultProps } from "./type";
 
 const App: React.FC = () => {
   const [searchResult, setSearchResult] = useState<searchResultProps[]>();
   const [loading, setLoading] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>("");
+  const [errorStatus, setErrorStatus] = useState<string>("success");
+
+  function useDebounceHook(value: string, delay: number) {
+    const [debounceValue, setDebounceValue] = useState(value);
+    useEffect(() => {
+      let timer = setTimeout(() => setDebounceValue(value), delay);
+      return () => clearTimeout(timer);
+    }, [value, delay]);
+    return debounceValue;
+  }
+
+  const searchKeyword = useDebounceHook(keyword, 300);
 
   const fetchData = async () => {
     try {
       setLoading(true);
-      await axios.get(getApiUrl("true", keyword)).then((res: any) => {
-        console.log(res.data);
-        setSearchResult(res.data);
-      });
+      await axios
+        .get(getApiUrl("false", keyword), { timeout: 4000 })
+        .then((res: any) => {
+          setSearchResult(res.data);
+        });
       setLoading(false);
+      setErrorStatus("success");
     } catch (e) {
-      console.log(e);
+      setLoading(false);
+      if (e.response === undefined) {
+        setErrorStatus("timeout");
+      } else {
+        setErrorStatus("failed");
+      }
     }
   };
 
-  console.log(loading);
-
   useEffect(() => {
+    setSearchResult([]);
     fetchData();
-  }, [keyword]);
+  }, [searchKeyword]);
 
   return (
     <div className={"mainContainer"}>
       <div className={"cardContainer"}>
         <div className={"cardBody"}>
-          <SearchBar setKeyword={setKeyword} />
-          <LabelList />
+          <SearchBar
+            setKeyword={setKeyword}
+            keyword={keyword}
+            errorStatus={errorStatus}
+          />
+          <LabelList selectedLabel={keyword} setKeyword={setKeyword} />
           <SearchResultList
             searchResultList={searchResult!}
             loading={loading}
+            errorStatus={errorStatus!}
           />
-          <div className={"cardFooter"}></div>
+          <div className={"cardFooter"}>
+            <FooterText
+              loading={loading}
+              resultsLength={searchResult ? searchResult.length : 0}
+              errorStatus={errorStatus!}
+            />
+          </div>
         </div>
       </div>
+      <div className={"DCLogo"}>D C</div>
     </div>
   );
 };

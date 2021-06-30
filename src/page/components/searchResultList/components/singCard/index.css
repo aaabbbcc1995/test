@@ -64,7 +64,10 @@
 }
 
 .description {
-    width: 100%;
+    width: 500px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
     font-family: Poppins;
     font-style: normal;
     font-weight: normal;
