@@ -4,7 +4,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, under test folder(/test), you can run:
+If you have not run this project before.
+
+please run `npm install` first under /test folder.
+
+In the project directory, under test folder(/test), then you can run:
 
 ### `npm start`
 
